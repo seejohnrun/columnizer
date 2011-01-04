@@ -11,7 +11,7 @@ module Columnizer
     str = ''
     data.each do |row|
       row.each_with_index do |field, index|
-        str += field + ' ' * (sizes[index] - field.size + (index == sizes.size - 1 ? 0 : options[:padding] || 0))
+        str += field.to_s + ' ' * (sizes[index] - field.to_s.size + (index == sizes.size - 1 ? 0 : options[:padding] || 0))
       end
       for index in row.size...sizes.size do # pad out
         str += ' ' * sizes[index]
@@ -29,7 +29,7 @@ module Columnizer
     data.each do |row|
       row.each_with_index do |field, index|
         c = sizes[index]
-        sizes[index] = field.size if c.nil? || c < field.size
+        sizes[index] = field.to_s.size if c.nil? || c < field.to_s.size
       end 
     end
     sizes
