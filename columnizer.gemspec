@@ -1,7 +1,7 @@
-require 'lib/columnizer/version'
+require File.dirname(__FILE__) + '/lib/columnizer/version'
 
 spec = Gem::Specification.new do |s|
-  
+
   s.name = 'columnizer'
   s.author = 'John Crepezzi'
   s.description = 'Put multi-dimensional arrays into neat columns'
