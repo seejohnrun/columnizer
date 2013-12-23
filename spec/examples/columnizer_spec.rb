@@ -6,7 +6,7 @@ describe Columnizer do
     data = [['hello', 'world']]
     Columnizer.columnize(data).should == "helloworld\n"
   end
-  
+
   it 'should be able to make two equal sized columns' do
     data = [['hello'], ['world']]
     Columnizer.columnize(data).should == "hello\nworld\n"
@@ -20,6 +20,11 @@ describe Columnizer do
   it 'should be okay with rows with missing elements' do
     data = [['one', 'two'], ['three']]
     Columnizer.columnize(data).should == "one  two\nthree   \n"
+  end
+
+  it 'should be okay with rows with missing elements and padding' do
+    data = [['one', 'two'], ['a']]
+    Columnizer.columnize(data, padding: 2).should == "one  two\na       \n"
   end
 
   it 'should be okay with three-wide rows data' do
